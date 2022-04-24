@@ -19,5 +19,4 @@ def search_with_name(search_term: str):
     all_hits = []
     for hit in resp['hits']['hits']:
         all_hits.append(hit["_source"])
-    print(all_hits)
     return all_hits
