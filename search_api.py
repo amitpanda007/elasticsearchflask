@@ -11,7 +11,7 @@ client = es(
 )
 
 
-def search_with_name(search_term: str):
+def search_countries_with_name(search_term: str):
     # query = {"match": {"name": search_term}}
     query = {"regexp": { "name": f'.*{search_term}.*'}}
     resp = client.search(index="countries", query=query)
@@ -20,3 +20,14 @@ def search_with_name(search_term: str):
     for hit in resp['hits']['hits']:
         all_hits.append(hit["_source"])
     return all_hits
+
+
+def search_cities_with_name(search_term: str):
+    query = {"regexp": { "name": f'.*{search_term}.*'}}
+    resp = client.search(index="cities", query=query)
+
+    all_hits = []
+    for hit in resp['hits']['hits']:
+        all_hits.append(hit["_source"])
+    return all_hits
+

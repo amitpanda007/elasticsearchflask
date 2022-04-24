@@ -1,4 +1,5 @@
-env/
+venv/
 certs/
 .idea/
 __pycache__/
+helper/firebase_key.json
