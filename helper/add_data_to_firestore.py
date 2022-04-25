@@ -53,6 +53,15 @@ def add_data(data: dict):
     col_ref.add(data)
 
 
+def read_doc_data(col_name: str, doc_name: str):
+    doc_ref = db.collection(col_name).document(doc_name)
+    doc = doc_ref.get()
+    if doc.exists:
+        print(f'Document data: {doc.to_dict()}')
+    else:
+        print(u'No such document!')
+
+
 if __name__ == "__main__":
     location = ["Cuttack"]
     centralNumbers = [{
@@ -89,6 +98,8 @@ if __name__ == "__main__":
     }
     ]
 
-    data = format_data(location, centralNumbers, majorHelplines, userProvidedNumbers)
-    print(data)
-    add_data(data)
+    # data = format_data(location, centralNumbers, majorHelplines, userProvidedNumbers)
+    # print(data)
+    # add_data(data)
+
+    read_doc_data('locations', 'InO30fbSYAkb7FhAIGm5')
